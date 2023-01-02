@@ -1,0 +1,27 @@
+.landing-apps-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #2E3032;
+}
+
+.landing-apps-container-width {
+  width: 25%;
+  padding: 0 0 0 0;
+}
+
+.landing-apps-content-margin {
+  margin: 0 10rem 5rem 10rem;
+}
+
+@media (max-width: 800px) {
+  .landing-apps-container-width {
+    width: 100%;
+    padding: 0 20vw 0 20vw;
+  }
+
+  .landing-apps-content-margin {
+    margin: 0 0 5rem 0;
+  }
+}

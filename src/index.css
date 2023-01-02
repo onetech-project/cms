@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  max-width: 90vw !important;
+}
+
+@media (max-width: 575px) {
+  .flex-xs-column {
+    flex-direction: column !important;
+  }
+}
+
+.banner-caption-container {
+  margin: 26.5vh 0 26.5vh 10vw;
+  max-width: 475px;
+  height: 324px;
+}
+
+.banner-caption {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 72px;
+}
+
+.banner-description {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 3vh;
+}
+
+.banner-button {
+  background-color: #E42312;
+}
+
+.text-red {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #E42312;
+  text-decoration: none;
+}
+
+.image-cover-fluid {
+  background-image: var(--img);
+  max-width: 100vw;
+  height: auto;
+  background-size: cover;
+}
+
+.image-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+  padding: 10vh;
+}
+
+@media (max-width: 991px) {
+  .banner-caption-container {
+    margin: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .image-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    padding: 5 vh;
+  }
+}
