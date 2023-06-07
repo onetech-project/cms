@@ -1,11 +1,12 @@
 import React from 'react';
-import { Container, Row, Col, Nav, NavDropdown, Image } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Image } from 'react-bootstrap';
 import { FaWhatsapp, FaRegEnvelope, FaRegCalendarAlt, FaRegMap } from 'react-icons/fa';
 import { logo } from '../../assets';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const { t } = useTranslation();
+  const isLanding = window.location.pathname === '/';
   return (
     <div className="text-lg-start text-muted">
       <section className="">
@@ -17,35 +18,20 @@ const Footer = () => {
 
             <Col xs="12" sm="6" md="6" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">{t('LANG-012')}</h6>
-              <Nav.Link href="/" className="mb-2">
+              <Nav.Link href={`${isLanding ? '#' : '/#'}home`} className="mb-2">
                 {t('LANG-001')}
               </Nav.Link>
-              <NavDropdown title={t('LANG-002')} id="about" className="mb-2">
-                <NavDropdown.Item href="/about">{t('LANG-008')}</NavDropdown.Item>
-                <NavDropdown.Item href="/services">{t('LANG-009')}</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="/news" className="mb-2">
+              <Nav.Link href={`${isLanding ? '#' : '/#'}about`} className="mb-2">
+                {t('LANG-002')}
+              </Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}product`} className="mb-2">
                 {t('LANG-003')}
               </Nav.Link>
-              <NavDropdown title={t('LANG-004')} id="help" className="mb-2">
-                <NavDropdown.Item href="/faq">{t('LANG-010')}</NavDropdown.Item>
-                <NavDropdown.Item href="/guides">{t('LANG-011')}</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="/contact" className="mb-2">
+              <Nav.Link href={`${isLanding ? '#' : '/#'}blog`} className="mb-2">
+                {t('LANG-004')}
+              </Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}contact`} className="mb-2">
                 {t('LANG-005')}
-              </Nav.Link>
-            </Col>
-
-            <Col xs="12" sm="6" md="6" lg="2" xl="2" className="mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">{t('LANG-013')}</h6>
-              <Nav.Link href="/" className="mb-2">
-                {t('LANG-006')}
-              </Nav.Link>
-              <Nav.Link href="/" className="mb-2">
-                {t('LANG-007')}
-              </Nav.Link>
-              <Nav.Link href="/" className="mb-2">
-                {t('LANG-011')}
               </Nav.Link>
             </Col>
 
@@ -55,7 +41,7 @@ const Footer = () => {
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">
                   <FaWhatsapp className="me-2" />
                 </Col>
-                <Col>+(62) 856-9597-1323</Col>
+                <Col>+(62) 812-1248-0989</Col>
               </Row>
               <Row className="mb-2">
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">
@@ -65,7 +51,7 @@ const Footer = () => {
                   <a
                     className="text-decoration-none text-reset"
                     href="mailto:putra.faris295@gmail.com">
-                    putra.faris295@gmail.com
+                    wanfadlybaros2@gmail.com
                   </a>
                 </Col>
               </Row>
@@ -83,7 +69,7 @@ const Footer = () => {
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">
                   <FaRegMap className="me-3" />
                 </Col>
-                <Col>St. Lorem Impsum</Col>
+                <Col>Jl. Puncak Semeru Golf, Bukit Golf Hijau, Bukit Sentul, Bogor, Jawa Barat</Col>
               </Row>
             </Col>
           </Row>
@@ -94,7 +80,7 @@ const Footer = () => {
         <div className="mx-auto w-75 border-top" />
         <br />© {new Date().getFullYear()} All Right Reserved.&nbsp;
         <a className="text-reset text-decoration-none" href={process.env.REACT_APP_BASE_URL}>
-          Faris baros
+          {process.env.REACT_APP_WEBSITE_NAME}
         </a>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, NavDropdown, Navbar as NB, Button, Image } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar as NB, Image } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { logo, globe } from '../../assets';
@@ -11,44 +11,23 @@ const Navbar = () => {
   const general = useSelector((state) => state.generalReducer);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const isLanding = window.location.pathname === '/';
 
   return (
     <>
-      <NB bg="white" expand="lg" sticky="top">
+      <NB bg="white" expand="lg" sticky="top" className="shadow-sm border-bottom-1">
         <Container>
           <NB.Brand href="/">
-            <Image src={logo} alt="logo" fluid height={100} width={100} />
+            <Image src={logo} alt="logo" className="brand-logo" />
           </NB.Brand>
           <NB.Toggle aria-controls="basic-navbar-nav" />
           <NB.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">{t('LANG-001')}</Nav.Link>
-              <NavDropdown title={t('LANG-002')} id="about">
-                <NavDropdown.Item href="/about">
-                  <span>{t('LANG-008')}</span>
-                  <br />
-                  <span className="text-secondary">{t('LANG-016')}</span>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/services">
-                  <span>{t('LANG-009')}</span>
-                  <br />
-                  <span className="text-secondary">{t('LANG-017')}</span>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="/news">{t('LANG-003')}</Nav.Link>
-              <NavDropdown title={t('LANG-004')} id="help">
-                <NavDropdown.Item href="/faq">
-                  <span>{t('LANG-010')}</span>
-                  <br />
-                  <span className="text-secondary">{t('LANG-018')}</span>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/guides">
-                  <span>{t('LANG-011')}</span>
-                  <br />
-                  <span className="text-secondary">{t('LANG-019')}</span>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="/contact">{t('LANG-005')}</Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}home`}>{t('LANG-001')}</Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}about`}>{t('LANG-002')}</Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}product`}>{t('LANG-003')}</Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}partners`}>{t('LANG-004')}</Nav.Link>
+              <Nav.Link href={`${isLanding ? '#' : '/#'}contact`}>{t('LANG-005')}</Nav.Link>
             </Nav>
             <Nav className="justify-content-end">
               <NavDropdown
@@ -68,14 +47,6 @@ const Navbar = () => {
                 ))}
               </NavDropdown>
             </Nav>
-            <div className="d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column">
-              <Button as="a" href="login" variant="outline-secondary" size="sm" className="m-1">
-                {t('LANG-006')}
-              </Button>
-              <Button as="a" href="/register" variant="outline-danger" size="sm" className="m-1">
-                {t('LANG-007')}
-              </Button>
-            </div>
           </NB.Collapse>
         </Container>
       </NB>
