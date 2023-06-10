@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import Protected from './protected';
 
 const Navbar = lazy(() => import('../components/Navbar'));
 const Footer = lazy(() => import('../components/Footer'));
@@ -6,18 +7,22 @@ const Landing = lazy(() => import('../screens/Landing'));
 const Login = lazy(() => import('../screens/Login'));
 const PageNotFound = lazy(() => import('../screens/PageNotFound'));
 
-const getElement = (element) => (
+const getElement = (element, withNavbar, withFooter, isAdminPage) => (
   <>
-    <Navbar />
+    {withNavbar && <Navbar isAdminPage={isAdminPage} />}
     {element}
-    <Footer />
+    {withFooter && <Footer />}
   </>
+);
+
+const getProtectedElement = (element, permission) => (
+  <Protected permission={permission}>{element}</Protected>
 );
 
 const landing = [
   {
     path: '/',
-    element: getElement(<Landing />)
+    element: getElement(<Landing />, true, true)
   },
   {
     path: 'login',
@@ -29,6 +34,11 @@ const landing = [
   }
 ];
 
-const cms = [];
+const cms = [
+  {
+    path: '/admin/dashboard',
+    element: getProtectedElement(getElement(<></>, true, false, true), 'admin')
+  }
+];
 
 export { landing, cms };
