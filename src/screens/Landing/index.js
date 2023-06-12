@@ -6,6 +6,11 @@ import { Col, Image, Row, Carousel } from 'react-bootstrap';
 import { FaChevronRight } from 'react-icons/fa';
 import BG from '../../assets/BG';
 import Partners from '../../assets/Partners';
+import GP from '../../assets/GP';
+import Offroad from '../../assets/Offroad';
+import Rafting from '../../assets/Rafting';
+import EDU from '../../assets/EDU';
+import shorthand from '../../utils/shorthand';
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -19,7 +24,7 @@ const Landing = () => {
           button={{
             text: 'Contact Us',
             action: () => {
-              window.open('https://wa.me/6281212480989', '_blank');
+              shorthand.goToWhatsapp();
             }
           }}
         />
@@ -28,9 +33,6 @@ const Landing = () => {
         <div className="d-flex flex-column align-items-center justify-content-center mx-auto py-5 w-75">
           <Image src={logo} className="my-3" width={300} />
           <div className="landing-apps-description my-3">{t('ABOUT-001')}</div>
-          {/* <a href="/about" className="text-red my-3">
-            More Detail <FaChevronRight className="align-self-center" />
-          </a> */}
         </div>
       </section>
       <section id="product">
@@ -66,6 +68,92 @@ const Landing = () => {
               </>
             ),
             button: 'Pesan'
+          },
+          {
+            images: Object.values(GP),
+            title: 'PAKET FULLDAY OUTBOUND GUNUNG PANCAR RP.385.000,-/PAX',
+            description: () => (
+              <>
+                <p>Termasuk:</p>
+                <ul>
+                  <li>1x Makan dan 2x Coffee Break</li>
+                  <li>Aula / Ruang Berkumpul</li>
+                  <li>Halfday Outbound Program</li>
+                  <li>Fasilitator</li>
+                  <li>Sound System</li>
+                  <li>Air Mineral</li>
+                  <li>Banner</li>
+                  <li>Dokumentasi</li>
+                  <li>Min. 50 pax</li>
+                </ul>
+              </>
+            ),
+            button: 'Pesan'
+          },
+          {
+            images: Object.values(Offroad),
+            title: 'PAKET OFFROAD DI SENTUL RP.350.000 / PAX',
+            description: () => (
+              <>
+                <p>Termasuk:</p>
+                <ul>
+                  <li>Snack Box</li>
+                  <li>Air Mineral</li>
+                  <li>Guide</li>
+                  <li>Dokumentasi</li>
+                  <li>Banner</li>
+                  <li>Min. 10 pax</li>
+                </ul>
+              </>
+            ),
+            button: 'Pesan'
+          },
+          {
+            images: Object.values(Rafting),
+            title: 'PAKET RAFTING RP.250.000 / PAX',
+            description: () => (
+              <>
+                <p>Termasuk:</p>
+                <ul>
+                  <li>Explore Trip 1.5 jam</li>
+                  <li>Peralatan Rafting</li>
+                  <li>Guide</li>
+                  <li>Kelapa Muda</li>
+                  <li>Snack</li>
+                  <li>Transport local</li>
+                  <li>Gajebo</li>
+                  <li>Dokumentasi</li>
+                  <li>Min. 12 pax</li>
+                </ul>
+              </>
+            ),
+            button: 'Pesan'
+          },
+          {
+            images: Object.values(EDU),
+            title: 'PAKET WISATA EDUKASI RP.175.000 / PAX',
+            description: () => (
+              <>
+                <p>Termasuk:</p>
+                <ul>
+                  <li>Menonton Video Edukasi</li>
+                  <li>Pencangkokan</li>
+                  <li>Pembuatan Lubang Biopori</li>
+                  <li>Pembuatan Pupuk Kompos</li>
+                  <li>Belajar Membuat Jamu</li>
+                  <li>Menangkap Ikan</li>
+                  <li>Berenang di Waterpark</li>
+                  <li>Mini Outbound</li>
+                  <li>Lunch Box</li>
+                  <li>Water Dispenser</li>
+                  <li>Sound System</li>
+                  <li>Banner</li>
+                  <li>Dokumentasi</li>
+                  <li>Min. 50 pax</li>
+                </ul>
+              </>
+            ),
+            button: 'Pesan'
           }
         ].map((x, i) => (
           <Row key={i.toString()} className="landing-apps-content-margin">
@@ -82,13 +170,14 @@ const Landing = () => {
               <div className="d-flex flex-column justify-content-center h-100 mx-xl-5">
                 <h1 className="mb-3">{x.title}</h1>
                 {x.description()}
-                <a
-                  href="https://wa.me/6281212480989"
+                <span
+                  role="button"
+                  onClick={() => shorthand.goToWhatsapp(`paket **${x.title}** masih tersedia?`)}
                   target="_blank"
                   className="text-red"
                   rel="noreferrer">
                   {x.button} <FaChevronRight className="align-self-center" />
-                </a>
+                </span>
               </div>
             </Col>
           </Row>

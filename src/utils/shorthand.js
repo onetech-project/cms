@@ -55,4 +55,18 @@ const getRowsPerPage = (interval = 5, totalElement = 21) =>
     .fill()
     .map((x, i) => ({ label: i === 0 ? 'All' : i * interval, value: i * interval }));
 
-export default { getItemInToken, aosDuration, mimeType, removeDuplicateArrayItems, getRowsPerPage };
+const goToWhatsapp = (text = 'mau nanya nih...') => {
+  window.open(
+    `https://wa.me/6281212480989?text=Halo ${process.env.REACT_APP_WEBSITE_NAME}, ${text}`,
+    '_blank'
+  );
+};
+
+export default {
+  getItemInToken,
+  aosDuration,
+  mimeType,
+  removeDuplicateArrayItems,
+  getRowsPerPage,
+  goToWhatsapp
+};

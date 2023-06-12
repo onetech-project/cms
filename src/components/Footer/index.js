@@ -3,6 +3,7 @@ import { Container, Row, Col, Nav, Image } from 'react-bootstrap';
 import { FaWhatsapp, FaRegEnvelope, FaRegCalendarAlt, FaRegMap } from 'react-icons/fa';
 import { logo } from '../../assets';
 import { useTranslation } from 'react-i18next';
+import shorthand from '../../utils/shorthand';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -41,9 +42,7 @@ const Footer = () => {
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">
                   <FaWhatsapp className="me-2" />
                 </Col>
-                <Col
-                  onClick={() => window.open('https://wa.me/6281212480989', '_blank')}
-                  role="button">
+                <Col onClick={() => shorthand.goToWhatsapp()} role="button">
                   +(62) 812-1248-0989
                 </Col>
               </Row>

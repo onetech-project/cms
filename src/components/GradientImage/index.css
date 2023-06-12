@@ -1,7 +1,7 @@
 .gradient-image {
   background-image: var(--img);
   max-width: 100vw;
-  height: auto;
+  height: 100vh;
   background-size: cover;
   background-blend-mode: hard-light;
   color: white;

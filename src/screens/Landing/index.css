@@ -19,9 +19,12 @@
   scroll-margin-top: 64px;
 }
 
-section #videos {
+#landing section#home {
   height: 100vh;
-  width: 100%;
+}
+
+#landing section#about {
+  height: 100vh;
 }
 
 @media (min-width: 991px) {
