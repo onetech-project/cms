@@ -1,22 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import {
-  landing1,
-  landing4,
-  logo,
-  landing2,
-  landing3,
-  landingPartner1,
-  landingPartner3,
-  landingPartner4
-} from '../../assets';
+import { landing1, logo } from '../../assets';
 import { GradientImage } from '../../components';
 import './index.css';
-import { Badge, Button, Col, Image, Row } from 'react-bootstrap';
+import { Col, Image, Row, Carousel } from 'react-bootstrap';
 import { FaChevronRight } from 'react-icons/fa';
+import BG from '../../assets/BG';
+import Partners from '../../assets/Partners';
 
 const Landing = () => {
   const { t } = useTranslation();
-
   return (
     <div id="landing">
       <section id="home">
@@ -27,7 +19,7 @@ const Landing = () => {
           button={{
             text: 'Contact Us',
             action: () => {
-              location.href = process.env.REACT_APP_PREFIX_V3;
+              window.open('https://wa.me/6281212480989', '_blank');
             }
           }}
         />
@@ -36,9 +28,9 @@ const Landing = () => {
         <div className="d-flex flex-column align-items-center justify-content-center mx-auto py-5 w-75">
           <Image src={logo} className="my-3" width={300} />
           <div className="landing-apps-description my-3">{t('ABOUT-001')}</div>
-          <a href="/about" className="text-red my-3">
+          {/* <a href="/about" className="text-red my-3">
             More Detail <FaChevronRight className="align-self-center" />
-          </a>
+          </a> */}
         </div>
       </section>
       <section id="product">
@@ -50,29 +42,51 @@ const Landing = () => {
         </Row>
         {[
           {
-            image: landing2,
-            title: 'A Program For You',
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            button: 'Our Services'
-          },
-          {
-            image: landing3,
-            title: 'More Opportunities',
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            button: 'Steps to Partnerships'
+            images: Object.values(BG),
+            title: 'PAKET BUNDLING BUMI GUMATI RP.750.000,-/PAX',
+            description: () => (
+              <>
+                <p>Termasuk:</p>
+                <ul>
+                  <li>Menginap di Bumi Gumati 1 kamar isi 4 orang</li>
+                  <li>3x Makan dan 2x Coffee Break</li>
+                  <li>Aula / Ruang Berkumpul</li>
+                  <li>Halfday Outbound</li>
+                  <li>Paintball</li>
+                  <li>Api Unggun</li>
+                  <li>Solo Keyboard</li>
+                  <li>MC</li>
+                  <li>Fasilitator</li>
+                  <li>Sound System</li>
+                  <li>Air Mineral</li>
+                  <li>Banner</li>
+                  <li>Dokumentasi</li>
+                  <li>Min. 50 pax</li>
+                </ul>
+              </>
+            ),
+            button: 'Pesan'
           }
         ].map((x, i) => (
           <Row key={i.toString()} className="landing-apps-content-margin">
             <Col xxl="6" xl="6" lg="6" md="12" sm="12" xs="12" className="mb-3">
-              <Image src={x.image} fluid width={600} height={600} />
+              <Carousel className="carousel-container">
+                {x.images.map((x, i) => (
+                  <Carousel.Item key={i.toString()}>
+                    <Image src={x} fluid />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
             </Col>
             <Col xxl="6" xl="6" lg="6" md="12" sm="12" xs="12">
               <div className="d-flex flex-column justify-content-center h-100 mx-xl-5">
                 <h1 className="mb-3">{x.title}</h1>
-                <div className="mb-3">{x.description}</div>
-                <a href="/services" className="text-red">
+                {x.description()}
+                <a
+                  href="https://wa.me/6281212480989"
+                  target="_blank"
+                  className="text-red"
+                  rel="noreferrer">
                   {x.button} <FaChevronRight className="align-self-center" />
                 </a>
               </div>
@@ -88,101 +102,31 @@ const Landing = () => {
           </Col>
         </Row>
         <Row className="landing-apps-content-margin">
-          {[
-            {
-              image: landingPartner1,
-              link: '#'
-            },
-            {
-              image: landingPartner3,
-              link: '#'
-            },
-            {
-              image: landingPartner4,
-              link: '#'
-            },
-            {
-              image: landingPartner1,
-              link: '#'
-            },
-            {
-              image: landingPartner3,
-              link: '#'
-            },
-            {
-              image: landingPartner4,
-              link: '#'
-            }
-          ].map((x, i) => (
-            <Col key={i.toString()} xxl="2" xl="2" lg="2" md="6" sm="6" xs="6">
+          {Object.values(Partners).map((x, i) => (
+            <Col key={i.toString()} xxl="2" xl="2" lg="2" md="6" sm="6" xs="6" className="mx-auto">
               <div className="text-center">
-                <a href={x.link} target="_blank" rel="noreferrer">
-                  <Image src={x.image} fluid />
-                </a>
+                <Image src={x} width={200} height={200} />
               </div>
             </Col>
           ))}
         </Row>
       </section>
-      <section id="contact">
-        <div className="image-cover-fluid" style={{ '--img': `url(${landing4})` }}>
-          <div className="image-overlay">
-            <Row className="mb-5">
-              <Col>
-                <h1 className="text-white">Become our next partner</h1>
-                <p className="text-white">
-                  Get started in easy way. You can be signed in and propose a partnership in just a
-                  few minutes, at no cost.
-                </p>
-              </Col>
-            </Row>
-            <Row className="mb-5">
-              {[
-                {
-                  caption: 'Get Connected With Us',
-                  description:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                },
-                {
-                  caption: 'Choose the right solution for your business',
-                  description:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                },
-                {
-                  caption: 'Propose your partnership proposal',
-                  description:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                }
-              ].map((x, i) => (
-                <Col key={i.toString()} xxl="4" xl="4" lg="4" md="12" sm="12" xs="12">
-                  <Row>
-                    <Col xxl="1" xl="1" lg="1" md="1" sm="1" xs="2">
-                      <h4 className="text-white">
-                        <Badge pill bg="danger">
-                          {i + 1}
-                        </Badge>
-                      </h4>
-                    </Col>
-                    <Col xxl="11" xl="11" lg="11" md="11" sm="11" xs="10">
-                      <h1 className="text-white">{x.caption}</h1>
-                      <p className="text-white">{x.description}</p>
-                    </Col>
-                  </Row>
-                </Col>
-              ))}
-            </Row>
-            <Row>
-              <Col className="text-center">
-                <Button
-                  variant="danger"
-                  size="lg"
-                  className="d-flex justify-content-center banner-button m-auto">
-                  Become Our Next Partner <FaChevronRight className="align-self-center m-1" />
-                </Button>
-              </Col>
-            </Row>
-          </div>
-        </div>
+      <section id="videos">
+        <Row className="landing-apps-content-margin">
+          <Carousel className="w-100">
+            <Carousel.Item>
+              <iframe
+                src="https://www.youtube.com/embed/F0WFPFKPZkw"
+                width="100%"
+                height="700px"
+                title="Kegiatan Outbound di Sentul"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </Carousel.Item>
+          </Carousel>
+        </Row>
       </section>
     </div>
   );

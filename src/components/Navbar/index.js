@@ -30,7 +30,8 @@ const Navbar = ({ isAdminPage }) => {
                   <Nav.Link href={`${isLanding ? '#' : '/#'}about`}>{t('LANG-002')}</Nav.Link>
                   <Nav.Link href={`${isLanding ? '#' : '/#'}product`}>{t('LANG-003')}</Nav.Link>
                   <Nav.Link href={`${isLanding ? '#' : '/#'}partners`}>{t('LANG-004')}</Nav.Link>
-                  <Nav.Link href={`${isLanding ? '#' : '/#'}contact`}>{t('LANG-005')}</Nav.Link>
+                  {/* <Nav.Link href={`${isLanding ? '#' : '/#'}contact`}>{t('LANG-005')}</Nav.Link> */}
+                  <Nav.Link href={`${isLanding ? '#' : '/#'}videos`}>{t('LANG-024')}</Nav.Link>
                 </Nav>
                 <Nav className="justify-content-end">
                   <NavDropdown

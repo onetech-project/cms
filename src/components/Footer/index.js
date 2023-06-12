@@ -41,7 +41,11 @@ const Footer = () => {
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">
                   <FaWhatsapp className="me-2" />
                 </Col>
-                <Col>+(62) 812-1248-0989</Col>
+                <Col
+                  onClick={() => window.open('https://wa.me/6281212480989', '_blank')}
+                  role="button">
+                  +(62) 812-1248-0989
+                </Col>
               </Row>
               <Row className="mb-2">
                 <Col xs="1" sm="1" md="1" lg="1" xl="1">

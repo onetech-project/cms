@@ -1,14 +1,15 @@
 .brand-logo {
   position: absolute;
   top: -1vh;
-  left: 2.5vw;
-  height: 90px;
-  width: 55px;
+  left: 1vw;
+  height: 80px;
+  width: 80px;
 }
 
 @media (max-width: 991px) {
   .brand-logo {
     top: -1vh;
-    height: 78px;
+    height: 75px;
+    width: 75px;
   }
 }
