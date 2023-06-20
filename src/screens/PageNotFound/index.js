@@ -10,8 +10,10 @@ const PageNotFound = () => {
           <span className="text-danger">Opps!</span> Page not found.
         </p>
         <p className="lead">The page you’re looking for doesn’t exist.</p>
-        <a href="/" className="btn btn-primary">
-          Go Home
+        <a
+          onClick={() => (history.state ? history.back() : (location.href = '/'))}
+          className="btn btn-primary">
+          {history.state ? 'Go Back' : 'Go Home'}
         </a>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { PageNotPermitted } from '../screens';
 // eslint-disable-next-line react/prop-types
 function Protected({ children, permission }) {
   const auth = useSelector((state) => state.authReducer.auth);
-  if (!auth?.access_token) {
+  if (!auth?.token) {
     return <Navigate to="/admin/login" replace />;
   }
   if (!shorthand.getItemInToken('roles')?.includes?.(permission)) {

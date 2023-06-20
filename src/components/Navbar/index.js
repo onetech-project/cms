@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { logo, globe } from '../../assets';
 import { lang } from '../../i18n';
-import { generalAction } from '../../stores/actions';
+import { authAction, generalAction } from '../../stores/actions';
 import PropTypes from 'prop-types';
 import './index.css';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = ({ isAdminPage }) => {
   const general = useSelector((state) => state.generalReducer);
@@ -18,7 +19,7 @@ const Navbar = ({ isAdminPage }) => {
     <>
       <NB bg="white" expand="lg" sticky="top" className="shadow-sm border-bottom-1">
         <Container>
-          <NB.Brand href="/">
+          <NB.Brand href={isAdminPage ? '/admin/dashboard' : '/'}>
             <Image src={logo} alt="logo" className="brand-logo" />
           </NB.Brand>
           <NB.Toggle aria-controls="basic-navbar-nav" />
@@ -53,12 +54,19 @@ const Navbar = ({ isAdminPage }) => {
                 </Nav>
               </>
             ) : (
-              <Nav className="me-auto">
-                <Nav.Link href="/admin/dashboard">Dashboard</Nav.Link>
-                <Nav.Link href="/admin/blog">Blog</Nav.Link>
-                <Nav.Link href="/admin/general-setting">General Setting</Nav.Link>
-                <Nav.Link href="/admin/landing-setting">Landing Setting</Nav.Link>
-              </Nav>
+              <>
+                <Nav className="me-auto">
+                  <Nav.Link href="/admin/dashboard">Dashboard</Nav.Link>
+                  <Nav.Link href="/admin/blog">Blog</Nav.Link>
+                  <Nav.Link href="/admin/general-setting">General Setting</Nav.Link>
+                  <Nav.Link href="/admin/landing-setting">Landing Setting</Nav.Link>
+                </Nav>
+                <Nav className="justify-content-end">
+                  <Nav.Link onClick={dispatch(authAction.doLogout())}>
+                    Logout <FaSignOutAlt />
+                  </Nav.Link>
+                </Nav>
+              </>
             )}
           </NB.Collapse>
         </Container>

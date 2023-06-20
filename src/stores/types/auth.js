@@ -1,0 +1,9 @@
+export const DO_LOGIN = {
+  REQUEST: 'DO_LOGIN_REQUEST',
+  SUCCESS: 'DO_LOGIN_SUCCESS',
+  FAILED: 'DO_LOGIN_FAILED'
+};
+
+export const DO_REFRESH_TOKEN = 'DO_REFRESH_TOKEN';
+
+export const DO_LOGOUT = 'DO_LOGOUT';
